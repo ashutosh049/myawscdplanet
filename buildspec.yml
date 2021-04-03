@@ -6,9 +6,12 @@ phases:
       java: corretto11
     commands:
       #- cp ./settings.xml /root/.m2/settings.xml
-      - echo IAM_USER_ACCESS_KEY_ID=$IAM_USER_ACCESS_KEY_ID
-      - echo IAM_USER_ACCESS_KEY_SECRET=$IAM_USER_ACCESS_KEY_SECRET
-      - cp ./settings.xml /root/.m2/settings.xml -Diam_user_access_key_id=$IAM_USER_ACCESS_KEY_ID -Diam_user_access_key_secret=$IAM_USER_ACCESS_KEY_SECRET
+      #- echo IAM_USER_ACCESS_KEY_ID=$IAM_USER_ACCESS_KEY_ID
+      #- echo IAM_USER_ACCESS_KEY_SECRET=$IAM_USER_ACCESS_KEY_SECRET
+      #- cp ./settings.xml /root/.m2/settings.xml -Diam_user_access_key_id=$IAM_USER_ACCESS_KEY_ID -Diam_user_access_key_secret=$IAM_USER_ACCESS_KEY_SECRET
+      - export IAM_USER_ACCESS_KEY_ID=$IAM_USER_ACCESS_KEY_ID
+      - export IAM_USER_ACCESS_KEY_SECRET=$IAM_USER_ACCESS_KEY_SECRET
+      #- cp ./settings.xml /root/.m2/settings.xml
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
@@ -20,7 +23,7 @@ phases:
   post_build:
     commands:
       #- cp ./settings.xml /root/.m2/settings.xml -DIAM_USER_ACCESS_KEY_ID=$IAM_USER_ACCESS_KEY_ID -DIAM_USER_ACCESS_KEY_SECRET=$IAM_USER_ACCESS_KEY_SECRET
-      - mvn clean deploy
+      - mvn -s settings.xml clean package deploy
 artifacts:
   files:
     - target/myawscdplanet-0.0.1-SNAPSHOT.jar
