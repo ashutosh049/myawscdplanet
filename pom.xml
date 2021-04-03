@@ -14,6 +14,17 @@
 	<name>MyAwsCdPlanet</name>
 	<description>Demo project for a AWS Continuous Delivery Pipeline</description>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sirfsup-maven-artifacts</id>
+			<url>s3://sirfsup-maven-artifacts/snapshot</url>
+		</snapshotRepository>
+		<repository>
+			<id>sirfsup-maven-artifacts</id>
+			<url>s3://sirfsup-maven-artifacts/release</url>
+		</repository>
+	</distributionManagement>
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -44,6 +55,13 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>com.github.platform-team</groupId>
+				<artifactId>aws-maven</artifactId>
+				<version>6.0.0</version>
+			</extension>
+		</extensions>
 	</build>
 
 </project>
