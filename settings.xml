@@ -134,8 +134,8 @@ under the License.
 	<!-- sirfsup-maven-artifacts -->
 	<server>
 		<id>sirfsup-maven-artifacts</id>
-		<username>${IAM_USER_ACCESS_KEY_ID}</username>
-		<password>${IAM_USER_ACCESS_KEY_SECRET}</password>
+		<username>${iam_user_access_key_id}</username>
+		<password>${iam_user_access_key_secret}</password>
 	</server>
   </servers>
 
