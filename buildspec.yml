@@ -6,6 +6,8 @@ phases:
       java: corretto11
     commands:
       #- cp ./settings.xml /root/.m2/settings.xml
+      - echo IAM_USER_ACCESS_KEY_ID=$IAM_USER_ACCESS_KEY_ID
+      - echo IAM_USER_ACCESS_KEY_SECRET=$IAM_USER_ACCESS_KEY_SECRET
       - cp ./settings.xml /root/.m2/settings.xml -Diam_user_access_key_id=$IAM_USER_ACCESS_KEY_ID -Diam_user_access_key_secret=$IAM_USER_ACCESS_KEY_SECRET
   pre_build:
     commands:
