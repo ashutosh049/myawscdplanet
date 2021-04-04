@@ -18,12 +18,12 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - mvn clean install
+      - mvn clean install -DskipTests=true
       #- mvn --settings settings.xml clean deploy -Diam-user-access-key-id=XXXX -Diam-user-secret-key=XXXX
   post_build:
     commands:
       #- cp ./settings.xml /root/.m2/settings.xml -DIAM_USER_ACCESS_KEY_ID=$IAM_USER_ACCESS_KEY_ID -DIAM_USER_ACCESS_KEY_SECRET=$IAM_USER_ACCESS_KEY_SECRET
-      - mvn -s settings.xml clean package deploy
+      - mvn -s settings.xml clean package deploy -DskipTests=true
 artifacts:
   files:
     - target/myawscdplanet-0.0.1-SNAPSHOT.jar
